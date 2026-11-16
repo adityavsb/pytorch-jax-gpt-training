@@ -70,7 +70,9 @@ def _torch_worker_dist(
             torch.cuda.set_device(local_rank)
 
     try:
-        device = torch.device(f"cuda:{local_rank}") if device_kind == "cuda" else torch.device("cpu")
+        device = (
+            torch.device(f"cuda:{local_rank}") if device_kind == "cuda" else torch.device("cpu")
+        )
         precision = "fp16" if device_kind == "cuda" else "fp32"
         spec = get_spec(preset)
 
@@ -211,7 +213,9 @@ def _run_torch_repeat(
         trace_arg = ["--trace-out", trace_out] if trace_out else []
         if device_kind == "cuda":
             torchrun_path = Path(sys.executable).parent / "torchrun"
-            torchrun_bin = str(torchrun_path) if torchrun_path.exists() else shutil.which("torchrun")
+            torchrun_bin = (
+                str(torchrun_path) if torchrun_path.exists() else shutil.which("torchrun")
+            )
             if not torchrun_bin:
                 raise SystemExit("torchrun executable not found")
             cmd = [
@@ -528,21 +532,17 @@ def main(argv: list[str] | None = None) -> int:
                 else str(out_dir / "traces" / "jax_2gpu_fail")
             )
             if args.framework == "torch":
-                _run_torch_repeat(
-                    args.preset, args.device, mode, local_batch, 2, 2, trace_target
-                )
+                _run_torch_repeat(args.preset, args.device, mode, local_batch, 2, 2, trace_target)
             else:
-                _run_jax_repeat(
-                    args.preset, args.device, global_batch, 2, 2, trace_target
-                )
+                _run_jax_repeat(args.preset, args.device, global_batch, 2, 2, trace_target)
     else:
         entry["passed"] = bool(entry["finite"])
 
     _update_scale_json(out_dir, regime, args.framework, entry, force_gates=args.force_gates)
     print(
         f"[scale:{regime}:{args.framework}] global_batch={global_batch} "
-        f"step={t2_s*1000:.1f} ms tok/s={tok2:.0f} eff={entry['scaling_efficiency']*100:.1f}% "
-        f"delta={entry['delta_step_s']*1000:+.1f} ms"
+        f"step={t2_s * 1000:.1f} ms tok/s={tok2:.0f} eff={entry['scaling_efficiency'] * 100:.1f}% "
+        f"delta={entry['delta_step_s'] * 1000:+.1f} ms"
     )
     return 0 if entry["passed"] else 1
 

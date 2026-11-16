@@ -69,7 +69,9 @@ def collect_provenance(
         torch_info: dict[str, Any] = {
             "torch": torch.__version__,
             "cuda": torch.version.cuda,
-            "cudnn": torch.backends.cudnn.version() if torch.backends.cudnn.is_available() else None,
+            "cudnn": torch.backends.cudnn.version()
+            if torch.backends.cudnn.is_available()
+            else None,
             "cuda_available": torch.cuda.is_available(),
             "device_count": torch.cuda.device_count() if torch.cuda.is_available() else 0,
         }

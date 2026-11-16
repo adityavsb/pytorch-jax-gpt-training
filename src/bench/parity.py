@@ -127,7 +127,9 @@ def _compare(out_dir: Path, parity_dir: Path, preset: str, *, force_gates: bool)
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="FP32 forward parity check between PyTorch and JAX")
+    parser = argparse.ArgumentParser(
+        description="FP32 forward parity check between PyTorch and JAX"
+    )
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--framework", choices=["torch", "jax"])
     group.add_argument("--compare", action="store_true")

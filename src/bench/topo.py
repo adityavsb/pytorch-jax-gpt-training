@@ -106,7 +106,9 @@ def _probe_jax(device_kind: str) -> int:
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Inspect hardware topology and framework visibility")
+    parser = argparse.ArgumentParser(
+        description="Inspect hardware topology and framework visibility"
+    )
     parser.add_argument("--framework", choices=["torch", "jax"], required=True)
     parser.add_argument("--out", required=True, help="Results directory path")
     parser.add_argument("--device", choices=["cuda", "cpu"], default="cuda")

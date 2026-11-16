@@ -244,7 +244,7 @@ def _run_torch_parent(
             row["graph_breaks"] = runs[0].get("graph_breaks")
         rows.append(row)
         print(
-            f"[single:torch:{mode}] step={row['step_s']['median']*1000:.1f} ms "
+            f"[single:torch:{mode}] step={row['step_s']['median'] * 1000:.1f} ms "
             f"tok/s={row['tokens_per_s']['median']:.0f} mem={row['peak_mem_gb']:.2f} GB"
         )
 
@@ -282,9 +282,7 @@ def _run_jax_parent(
     for r in range(repeats):
         with tempfile.TemporaryDirectory() as tmp:
             w_out = Path(tmp) / "worker.json"
-            trace_arg = (
-                ["--trace-out", str(out_dir / "traces" / "jax_single")] if r == 0 else []
-            )
+            trace_arg = ["--trace-out", str(out_dir / "traces" / "jax_single")] if r == 0 else []
             cmd = [
                 sys.executable,
                 "-m",
@@ -342,7 +340,7 @@ def _run_jax_parent(
         jax_row["precision"] = precision
         jax_row["batch_per_gpu"] = batch_star
         print(
-            f"[single:jax:jit] step={jax_row['step_s']['median']*1000:.1f} ms "
+            f"[single:jax:jit] step={jax_row['step_s']['median'] * 1000:.1f} ms "
             f"tok/s={jax_row['tokens_per_s']['median']:.0f} mem={jax_row['peak_mem_gb']:.2f} GB"
         )
 

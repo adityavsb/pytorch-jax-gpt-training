@@ -45,9 +45,7 @@ def _run_jax(preset: str, device_kind: str, steps: int) -> dict[str, object]:
     spec = get_spec(preset)
     precision = "fp16" if device_kind == "cuda" else "fp32"
     handle = build_jax_step(spec, sample_batch_size=2, n_devices=1, precision=precision, seed=0)
-    pool = make_synthetic_pool(
-        spec, 2, batch_sharding=handle.batch_sharding, num_batches=4, seed=1
-    )
+    pool = make_synthetic_pool(spec, 2, batch_sharding=handle.batch_sharding, num_batches=4, seed=1)
     state_box = [handle.state]
 
     def step_wrapper(batch: jax.Array) -> jax.Array:

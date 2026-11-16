@@ -128,7 +128,9 @@ def check_weak_scaling_gate(
     }
 
 
-def check_strong_scaling_flag(*, weak_efficiency: float, strong_efficiency: float) -> dict[str, Any]:
+def check_strong_scaling_flag(
+    *, weak_efficiency: float, strong_efficiency: float
+) -> dict[str, Any]:
     """Flag if strong scaling efficiency unexpectedly meets or exceeds weak scaling."""
     anomaly = strong_efficiency >= weak_efficiency
     return {

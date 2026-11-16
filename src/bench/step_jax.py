@@ -232,7 +232,9 @@ def build_jax_step(
 
         updates, new_opt = tx.update(grads, cur.opt_state, cur.params)
         new_params = optax.apply_updates(cur.params, updates)
-        return TrainState(params=new_params, opt_state=new_opt, loss_scale=cur.loss_scale), loss_scaled
+        return TrainState(
+            params=new_params, opt_state=new_opt, loss_scale=cur.loss_scale
+        ), loss_scaled
 
     jit_kwargs: dict[str, Any] = {
         "in_shardings": (repl_sharding, batch_sharding),

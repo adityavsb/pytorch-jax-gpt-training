@@ -4,7 +4,13 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from bench.report import END_MARKER, START_MARKER, plot_allreduce, render_report_block, update_readme
+from bench.report import (
+    END_MARKER,
+    START_MARKER,
+    plot_allreduce,
+    render_report_block,
+    update_readme,
+)
 from bench.results import write_json_atomic
 
 
@@ -30,7 +36,13 @@ def _write_golden_results(d: Path) -> None:
         {"bytes": 1_000_000, "median_s": 0.0003},
         {"bytes": 100_000_000, "median_s": 0.0253},
     ]
-    fit = {"alpha_us": 50.0, "beta_gbs": 4.0, "r2": 0.9999, "intercept_s": 5e-5, "slope_s_per_byte": 2.5e-10}
+    fit = {
+        "alpha_us": 50.0,
+        "beta_gbs": 4.0,
+        "r2": 0.9999,
+        "intercept_s": 5e-5,
+        "slope_s_per_byte": 2.5e-10,
+    }
     write_json_atomic(
         d / "allreduce.json",
         {
@@ -51,7 +63,11 @@ def _write_golden_results(d: Path) -> None:
             "batch_cmp": 4,
             "fp32_cmp": {"summary": {"median": 0.710}},
             "fp16_cmp": {"summary": {"median": 0.330}},
-            "fp16_star": {"summary": {"median": 0.350}, "peak_mem_gb": 12.1, "achieved_tflops": 24.4},
+            "fp16_star": {
+                "summary": {"median": 0.350},
+                "peak_mem_gb": 12.1,
+                "achieved_tflops": 24.4,
+            },
             "speedup_fp16_vs_fp32": 2.15,
             "passed": True,
         },

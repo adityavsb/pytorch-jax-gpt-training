@@ -23,7 +23,9 @@ class CausalSelfAttention(nn.Module):
         self.qkv = nn.Linear(spec.d_model, 3 * spec.d_model)
         self.proj = nn.Linear(spec.d_model, spec.d_model)
         mask = torch.tril(torch.ones(spec.seq_len, spec.seq_len, dtype=torch.bool))
-        self.register_buffer("causal_mask", mask.view(1, 1, spec.seq_len, spec.seq_len), persistent=False)
+        self.register_buffer(
+            "causal_mask", mask.view(1, 1, spec.seq_len, spec.seq_len), persistent=False
+        )
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         bsz, seq_len, d_model = x.shape
