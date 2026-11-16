@@ -69,8 +69,9 @@ def _find_batches_cuda(preset: str) -> tuple[int, float, int, list[dict[str, Any
         b_star = b
         b_star_mem = mem
         if mem >= GATE_TARGET_MEM_LOW_GB:
-            # Stay inside [10, 14] GB; keep checking if next even batch still fits <= 14 GB.
-            continue
+            # Stop at the first even batch >= 8.5 GB so both PyTorch and XLA's static
+            # buffer allocation fit inside the 15.0 GiB T4 limit without checkpointing.
+            break
 
     if b_star is None:
         raise SystemExit("Even batch=2 exceeded 14 GB or OOM'd on FP16; workload does not fit.")
