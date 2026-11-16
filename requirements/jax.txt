@@ -1,6 +1,5 @@
-# JAX environment requirements for CUDA 12 (NVIDIA T4, sm_75).
-# Exact pins are updated after the initial hardware probe (`scripts/setup.sh --probe`).
-jax[cuda12]>=0.4.30,<0.6
-optax>=0.2.2,<0.3
-numpy>=1.26,<2.3
-matplotlib>=3.8,<3.11
+# Pinned from 2x NVIDIA T4 environment probe (Python 3.13, CUDA 12 wheels).
+jax[cuda12]==0.12.0.1
+optax==0.2.9
+numpy==2.5.5
+matplotlib==3.11.2

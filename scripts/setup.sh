@@ -7,6 +7,9 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT_DIR"
 
+export MPLBACKEND=Agg
+export UV_LINK_MODE=copy
+
 PROBE=0
 if [[ "${1:-}" == "--probe" ]]; then
   PROBE=1

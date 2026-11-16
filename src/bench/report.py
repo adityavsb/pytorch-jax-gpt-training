@@ -161,9 +161,12 @@ def update_readme(readme_path: Path, block: str) -> None:
 
 
 def plot_allreduce(results_dir: Path) -> Path:
+    import os
+
+    os.environ["MPLBACKEND"] = "Agg"
     import matplotlib
 
-    matplotlib.use("Agg")
+    matplotlib.use("Agg", force=True)
     import matplotlib.pyplot as plt
     import numpy as np
 

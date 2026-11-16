@@ -1,5 +1,4 @@
-# PyTorch environment requirements for CUDA (NVIDIA T4, sm_75).
-# Exact pins are updated after the initial hardware probe (`scripts/setup.sh --probe`).
-torch>=2.4,<2.7
-numpy>=1.26,<2.3
-matplotlib>=3.8,<3.11
+# Pinned from 2x NVIDIA T4 environment probe (Python 3.13, CUDA 13 wheels).
+torch==2.15.0
+numpy==2.5.5
+matplotlib==3.11.2
