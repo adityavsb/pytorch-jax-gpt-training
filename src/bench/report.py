@@ -70,7 +70,8 @@ def render_report_block(results_dir: Path) -> str:
     mem_star = gate["fp16_star"]["peak_mem_gb"]
     tflops = gate["fp16_star"]["achieved_tflops"]
     gate_line = (
-        f"**Gate (batch\\*={b_star}, cmp={b_cmp}):** FP16 `{t_fp16:.3f} s` vs FP32 `{t_fp32:.3f} s` "
+        f"**Gate (batch\\*={b_star}, cmp={b_cmp}):** "
+        f"FP16 `{t_fp16:.3f} s` vs FP32 `{t_fp32:.3f} s` "
         f"(`{speedup:.2f}×`), `{mem_star:.2f} GB` peak, `{tflops:.1f}` / `65.0` TFLOP/s"
     )
 
@@ -88,7 +89,8 @@ def render_report_block(results_dir: Path) -> str:
     strong_rows = scale.get("strong", {}).get("rows", {})
 
     table_lines = [
-        "| Stack | 1 GPU (tok/s) | 2 GPU Weak (tok/s, eff, Δ vs sync) | 2 GPU Strong (tok/s, eff) |",
+        "| Stack | 1 GPU (tok/s) | 2 GPU Weak (tok/s, eff, Δ vs sync) "
+        "| 2 GPU Strong (tok/s, eff) |",
         "|---|---|---|---|",
         (
             f"| PyTorch (`{chosen_mode}`) | {_fmt_toks(torch_1g)} | "
@@ -199,7 +201,9 @@ def plot_allreduce(results_dir: Path) -> Path:
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Generate README table and allreduce plot from JSON")
+    parser = argparse.ArgumentParser(
+        description="Generate README table and allreduce plot from JSON"
+    )
     parser.add_argument("--results", required=True, help="Results directory containing stage JSONs")
     parser.add_argument("--readme", default="README.md")
     parser.add_argument("--no-plot", action="store_true")

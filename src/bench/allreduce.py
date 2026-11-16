@@ -42,7 +42,9 @@ def _torch_allreduce_worker(
 
     backend = "nccl" if device_kind == "cuda" else "gloo"
     if init_method is not None:
-        dist.init_process_group(backend=backend, init_method=init_method, rank=rank, world_size=world_size)
+        dist.init_process_group(
+            backend=backend, init_method=init_method, rank=rank, world_size=world_size
+        )
     else:
         dist.init_process_group(backend=backend)
         local_rank = int(os.environ.get("LOCAL_RANK", rank))
@@ -81,7 +83,9 @@ def _torch_allreduce_worker(
                 med = float(np.median(samples))
                 points.append({"bytes": nbytes, "median_s": med, "min_s": float(min(samples))})
 
-            fit = fit_allreduce_linear([p["bytes"] for p in points], [p["median_s"] for p in points])
+            fit = fit_allreduce_linear(
+                [p["bytes"] for p in points], [p["median_s"] for p in points]
+            )
             results[label] = {"points": points, "fit": fit}
 
         if rank == 0:
@@ -144,11 +148,14 @@ def _run_jax_allreduce(
     import jax
     import jax.numpy as jnp
     import numpy as np
+    from jax.sharding import Mesh, NamedSharding, PartitionSpec
 
     devs = jax.devices()[:2]
     if len(devs) < 2:
         raise SystemExit(f"JAX allreduce requires 2 devices, found {len(devs)}")
 
+    mesh = Mesh(np.array(devs), ("i",))
+    sharding = NamedSharding(mesh, PartitionSpec("i"))
     pmap_sum = jax.pmap(lambda x: jax.lax.psum(x, "i"), axis_name="i", devices=devs)
     dtypes = [("fp32", jnp.float32)]
     if device_kind == "cuda":
@@ -161,7 +168,7 @@ def _run_jax_allreduce(
         for nbytes in sizes_bytes:
             numel = max(1, nbytes // elem_size)
             host_arr = np.ones((2, numel), dtype=np.float32 if dt == jnp.float32 else np.float16)
-            sharded = jax.device_put_sharded([host_arr[0], host_arr[1]], devs)
+            sharded = jax.device_put(host_arr, sharding)
             for _ in range(warmup):
                 sharded = pmap_sum(sharded)
             jax.block_until_ready(sharded)

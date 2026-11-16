@@ -42,9 +42,12 @@ def _ddp_worker(rank: int, init_file: str, out_dir: str) -> None:
         )
         handle.raw_model.load_numpy(w_np)
         loss = handle.step_fn(local_tokens)
+        loss_avg = loss.detach().clone()
+        dist.all_reduce(loss_avg, op=dist.ReduceOp.SUM)
+        loss_avg /= 2.0
         if rank == 0:
             np.savez(Path(out_dir) / "ddp_params.npz", **handle.raw_model.to_numpy())
-            np.save(Path(out_dir) / "ddp_loss.npy", np.array([float(loss.detach())]))
+            np.save(Path(out_dir) / "ddp_loss.npy", np.array([float(loss_avg)]))
     finally:
         cleanup_distributed()
 
