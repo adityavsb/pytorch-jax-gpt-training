@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pytorch-jax-gpt-training"
+version = "0.1.0"
+description = "Data-parallel scaling benchmark of a GPT-2-medium transformer in PyTorch and JAX on 2x NVIDIA T4 GPUs."
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "Aditya Bhadoria" }]
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26",
+    "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+torch = [
+    "torch>=2.4",
+]
+jax = [
+    "jax>=0.4.30",
+    "optax>=0.2.2",
+]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

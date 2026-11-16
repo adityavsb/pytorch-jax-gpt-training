@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+build/
+dist/
+
+# Environments
+.venv*/
+.env
+
+# Run artifacts that are too large to commit
+results/*/traces/
+results/*/hlo/
+results/*/parity/*.npy
+results-*.tar.gz
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
