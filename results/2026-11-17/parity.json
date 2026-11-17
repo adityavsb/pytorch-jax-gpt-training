@@ -1,0 +1,19 @@
+{
+  "stage": "parity",
+  "preset": "medium",
+  "block_max_abs_diff": 1.1920928955078125e-06,
+  "full_max_abs_diff": 1.4841556549072266e-05,
+  "passed": true,
+  "forced": false,
+  "reasons": [],
+  "provenance": {
+    "timestamp_utc": "2026-11-17T08:11:53.177581+00:00",
+    "git_sha": "3b73071",
+    "git_dirty": true,
+    "python": "3.13.16",
+    "platform": "Linux-6.18.55+-x86_64-with-glibc2.39",
+    "env": {
+      "XLA_PYTHON_CLIENT_MEM_FRACTION": "0.92"
+    }
+  }
+}

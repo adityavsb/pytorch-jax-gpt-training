@@ -1,0 +1,6 @@
+Error in sitecustomize; set PYTHONVERBOSE for traceback:
+ModuleNotFoundError: No module named 'wrapt'
+[gate] probe fp16 batch=2 ok=True peak_mem=7.09 GB
+[gate] probe fp16 batch=4 ok=True peak_mem=9.07 GB
+[gate] probe fp32 batch=4 ok=True peak_mem=9.07 GB
+[gate] b*=4 b_cmp=4 speedup=2.60x mem=9.07 GB tflops=8.1 passed=True

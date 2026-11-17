@@ -1,0 +1,259 @@
+{
+  "stage": "scale",
+  "weak": {
+    "rows": {
+      "torch": {
+        "step_s": {
+          "median": 0.5946001629999955,
+          "min": 0.5763449219999757,
+          "max": 0.6089648109999644,
+          "p10": 0.5880693758000802,
+          "p90": 0.5987264792999213,
+          "count": 90,
+          "process_medians": [
+            0.595120548500006,
+            0.5911548450000055,
+            0.5969052725000097
+          ]
+        },
+        "tokens_per_s": {
+          "median": 6888.662760087455,
+          "min": 6726.1686160060235,
+          "max": 7106.855363254459
+        },
+        "achieved_tflops": 13.565331938679709,
+        "peak_mem_gb": 8.281202793121338,
+        "first_step_s": 27.90167764900002,
+        "loss_first": 7.148320198059082,
+        "loss_last": 6.9241814613342285,
+        "finite": true,
+        "n_processes": 3,
+        "framework": "torch",
+        "mode": "compile",
+        "regime": "weak",
+        "local_batch": 4,
+        "global_batch": 8,
+        "provenance": {
+          "timestamp_utc": "2026-11-17T08:22:38.217578+00:00",
+          "git_sha": "3b73071",
+          "git_dirty": true,
+          "python": "3.13.16",
+          "platform": "Linux-6.18.55+-x86_64-with-glibc2.39",
+          "env": {
+            "XLA_PYTHON_CLIENT_MEM_FRACTION": "0.92"
+          },
+          "torch": {
+            "torch": "2.15.0+cu132",
+            "cuda": "13.2",
+            "cudnn": 92600,
+            "cuda_available": true,
+            "device_count": 2,
+            "nccl": "2.30.7",
+            "devices": [
+              "Tesla T4",
+              "Tesla T4"
+            ]
+          }
+        },
+        "scaling_efficiency": 0.6279322992718456,
+        "delta_step_s": 0.2212315154999942,
+        "sync_estimate_s": 0.30128656448626584,
+        "passed": true,
+        "reasons": []
+      },
+      "jax": {
+        "step_s": {
+          "median": 0.575572637500045,
+          "min": 0.5690056569999342,
+          "max": 0.5901112679998732,
+          "p10": 0.5712560183000278,
+          "p90": 0.5824886120999736,
+          "count": 90,
+          "process_medians": [
+            0.5734499849999111,
+            0.5804912125000783,
+            0.5726209229999313
+          ]
+        },
+        "tokens_per_s": {
+          "median": 7116.3911088453715,
+          "min": 6941.063867299141,
+          "max": 7198.522456869833
+        },
+        "achieved_tflops": 14.013780462048754,
+        "peak_mem_gb": 11.025644779205322,
+        "first_step_s": 1.0068505909998748,
+        "loss_first": 7.145684242248535,
+        "loss_last": 6.928380489349365,
+        "finite": true,
+        "n_processes": 3,
+        "compile_s": 3.305524129000105,
+        "framework": "jax",
+        "mode": "jit",
+        "regime": "weak",
+        "local_batch": 4,
+        "global_batch": 8,
+        "provenance": {
+          "timestamp_utc": "2026-11-17T08:24:18.732591+00:00",
+          "git_sha": "3b73071",
+          "git_dirty": true,
+          "python": "3.13.16",
+          "platform": "Linux-6.18.55+-x86_64-with-glibc2.39",
+          "env": {
+            "XLA_PYTHON_CLIENT_MEM_FRACTION": "0.92"
+          },
+          "jax": {
+            "jax": "0.12.0.1",
+            "jaxlib": "0.12.0.1",
+            "backend": "gpu",
+            "devices": [
+              "cuda:0",
+              "cuda:1"
+            ]
+          }
+        },
+        "hlo_allreduce": {
+          "all_reduce_count": 4,
+          "all_reduce_bytes": 0
+        },
+        "scaling_efficiency": 0.8143432391710322,
+        "delta_step_s": 0.10685895150004399,
+        "sync_estimate_s": 0.30128656448626584,
+        "passed": true,
+        "reasons": []
+      }
+    },
+    "passed": true,
+    "forced": false
+  },
+  "passed": true,
+  "strong": {
+    "rows": {
+      "torch": {
+        "step_s": {
+          "median": 0.48745952599995235,
+          "min": 0.4791678060000777,
+          "max": 0.4905698989998655,
+          "p10": 0.48539629480012536,
+          "p90": 0.4897120719999748,
+          "count": 90,
+          "process_medians": [
+            0.48749425649998557,
+            0.4874749939999674,
+            0.48739849549997416
+          ]
+        },
+        "tokens_per_s": {
+          "median": 4201.374454215098,
+          "min": 4174.736371259831,
+          "max": 4274.076793881407
+        },
+        "achieved_tflops": 8.273454668202328,
+        "peak_mem_gb": 6.697885990142822,
+        "first_step_s": 27.601041785999996,
+        "loss_first": 7.139274597167969,
+        "loss_last": 6.901927471160889,
+        "finite": true,
+        "n_processes": 3,
+        "framework": "torch",
+        "mode": "compile",
+        "regime": "strong",
+        "local_batch": 2,
+        "global_batch": 4,
+        "provenance": {
+          "timestamp_utc": "2026-11-17T08:27:41.736605+00:00",
+          "git_sha": "3b73071",
+          "git_dirty": true,
+          "python": "3.13.16",
+          "platform": "Linux-6.18.55+-x86_64-with-glibc2.39",
+          "env": {
+            "XLA_PYTHON_CLIENT_MEM_FRACTION": "0.92"
+          },
+          "torch": {
+            "torch": "2.15.0+cu132",
+            "cuda": "13.2",
+            "cudnn": 92600,
+            "cuda_available": true,
+            "device_count": 2,
+            "nccl": "2.30.7",
+            "devices": [
+              "Tesla T4",
+              "Tesla T4"
+            ]
+          }
+        },
+        "scaling_efficiency": 0.38297399844027036,
+        "delta_step_s": 0.11409087849995103,
+        "passed": true,
+        "strong_vs_weak": {
+          "strong_ge_weak": false,
+          "note": "Strong scaling efficiency < weak scaling as expected."
+        }
+      },
+      "jax": {
+        "step_s": {
+          "median": 0.4018072530000154,
+          "min": 0.399568975999955,
+          "max": 0.404994853000062,
+          "p10": 0.40066766710015145,
+          "p90": 0.4036606153999628,
+          "count": 90,
+          "process_medians": [
+            0.40296995149992654,
+            0.40165213599993876,
+            0.40108337749995826
+          ]
+        },
+        "tokens_per_s": {
+          "median": 5096.971208730076,
+          "min": 5056.85438920797,
+          "max": 5125.523058627631
+        },
+        "achieved_tflops": 10.037086839106523,
+        "peak_mem_gb": 8.063072919845581,
+        "first_step_s": 0.8321556469998086,
+        "loss_first": 7.128512382507324,
+        "loss_last": 6.90739107131958,
+        "finite": true,
+        "n_processes": 3,
+        "compile_s": 3.1719087190001574,
+        "framework": "jax",
+        "mode": "jit",
+        "regime": "strong",
+        "local_batch": 2,
+        "global_batch": 4,
+        "provenance": {
+          "timestamp_utc": "2026-11-17T08:29:03.028929+00:00",
+          "git_sha": "3b73071",
+          "git_dirty": true,
+          "python": "3.13.16",
+          "platform": "Linux-6.18.55+-x86_64-with-glibc2.39",
+          "env": {
+            "XLA_PYTHON_CLIENT_MEM_FRACTION": "0.92"
+          },
+          "jax": {
+            "jax": "0.12.0.1",
+            "jaxlib": "0.12.0.1",
+            "backend": "gpu",
+            "devices": [
+              "cuda:0",
+              "cuda:1"
+            ]
+          }
+        },
+        "hlo_allreduce": {
+          "all_reduce_count": 4,
+          "all_reduce_bytes": 0
+        },
+        "scaling_efficiency": 0.5832568756542368,
+        "delta_step_s": -0.06690643299998555,
+        "passed": true,
+        "strong_vs_weak": {
+          "strong_ge_weak": false,
+          "note": "Strong scaling efficiency < weak scaling as expected."
+        }
+      }
+    },
+    "passed": true
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "stage": "single_torch",
+  "preset": "medium",
+  "batch_per_gpu": 4,
+  "rows": [
+    {
+      "step_s": {
+        "median": 0.5175552089999655,
+        "min": 0.505883257999983,
+        "max": 0.5354471929999818,
+        "p10": 0.508909003000008,
+        "p90": 0.5286961938000218,
+        "count": 90,
+        "process_medians": [
+          0.5194462679999958,
+          0.5214493515000527,
+          0.5120259450000049
+        ]
+      },
+      "tokens_per_s": {
+        "median": 3957.0657668719095,
+        "min": 3824.8402956891955,
+        "max": 4048.3648502162305
+      },
+      "achieved_tflops": 7.792355715512214,
+      "peak_mem_gb": 9.074703693389893,
+      "first_step_s": 0.8535335220000206,
+      "loss_first": 7.128675937652588,
+      "loss_last": 6.9125823974609375,
+      "finite": true,
+      "n_processes": 3,
+      "framework": "torch",
+      "mode": "eager",
+      "precision": "fp16",
+      "batch_per_gpu": 4
+    },
+    {
+      "step_s": {
+        "median": 0.3733686475000013,
+        "min": 0.35213113700001486,
+        "max": 0.399708521999969,
+        "p10": 0.354991767800027,
+        "p90": 0.3888500484999895,
+        "count": 90,
+        "process_medians": [
+          0.35745925399999123,
+          0.3733686475000013,
+          0.3857026850000125
+        ]
+      },
+      "tokens_per_s": {
+        "median": 5485.195432752539,
+        "min": 5123.73363908453,
+        "max": 5816.01507168028
+      },
+      "achieved_tflops": 10.801587969284395,
+      "peak_mem_gb": 9.038907527923584,
+      "first_step_s": 5.028825930000039,
+      "loss_first": 7.128689289093018,
+      "loss_last": 6.912586688995361,
+      "finite": true,
+      "n_processes": 3,
+      "framework": "torch",
+      "mode": "compile",
+      "precision": "fp16",
+      "batch_per_gpu": 4,
+      "graph_breaks": 0
+    }
+  ],
+  "provenance": {
+    "timestamp_utc": "2026-11-17T08:17:26.987806+00:00",
+    "git_sha": "3b73071",
+    "git_dirty": true,
+    "python": "3.13.16",
+    "platform": "Linux-6.18.55+-x86_64-with-glibc2.39",
+    "env": {
+      "XLA_PYTHON_CLIENT_MEM_FRACTION": "0.92"
+    },
+    "torch": {
+      "torch": "2.15.0+cu132",
+      "cuda": "13.2",
+      "cudnn": 92600,
+      "cuda_available": true,
+      "device_count": 2,
+      "nccl": "2.30.7",
+      "devices": [
+        "Tesla T4",
+        "Tesla T4"
+      ]
+    }
+  }
+}

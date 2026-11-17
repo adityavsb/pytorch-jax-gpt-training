@@ -1,0 +1,4 @@
+Error in sitecustomize; set PYTHONVERBOSE for traceback:
+ModuleNotFoundError: No module named 'wrapt'
+[single:torch:eager] step=517.6 ms tok/s=3957 mem=9.07 GB
+[single:torch:compile] step=373.4 ms tok/s=5485 mem=9.04 GB

@@ -1,0 +1,3 @@
+Error in sitecustomize; set PYTHONVERBOSE for traceback:
+ModuleNotFoundError: No module named 'wrapt'
+[scale:weak:torch] global_batch=8 step=594.6 ms tok/s=6889 eff=62.8% delta=+221.2 ms

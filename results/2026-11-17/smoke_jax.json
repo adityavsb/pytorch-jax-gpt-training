@@ -1,0 +1,35 @@
+{
+  "first_step_s": 0.11756534800002783,
+  "step_times_s": [
+    0.10493595499997355,
+    0.08378855600000179,
+    0.08072385600002008
+  ],
+  "loss_first": 7.087660312652588,
+  "loss_last": 7.094234466552734,
+  "finite": true,
+  "peak_mem_gb": 2.6061272621154785,
+  "compile_s": 3.0733514679999985,
+  "provenance": {
+    "timestamp_utc": "2026-11-17T08:11:03.155930+00:00",
+    "git_sha": "3b73071",
+    "git_dirty": true,
+    "python": "3.13.16",
+    "platform": "Linux-6.18.55+-x86_64-with-glibc2.39",
+    "env": {
+      "XLA_PYTHON_CLIENT_MEM_FRACTION": "0.92"
+    },
+    "jax": {
+      "jax": "0.12.0.1",
+      "jaxlib": "0.12.0.1",
+      "backend": "gpu",
+      "devices": [
+        "cuda:0",
+        "cuda:1"
+      ]
+    }
+  },
+  "stage": "smoke_jax",
+  "preset": "small",
+  "passed": true
+}
